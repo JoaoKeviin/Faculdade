@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo IMC</title>
+</head>
+<body>'
+    <h1>Medidas antropométricas</h1>'
+
+        <H3>Informe os dados abaixos</H3>
+
+        Nome completo 
+        <input type="text" name="" id="input_nome"> <br>
+        Peso (Em quilogramas):
+        <input type="text" name="" id="input_peso"> <br>
+        Altura (em metros):
+        <input type="text" name="" id="input_altura"> <br> <br>
+
+        <button onclick="calcular ()">calcular</button> <br>
+
+</body>
+</html>
+
+<script>
+    
+
+    var peso = 0;
+    var altura = 0;
+    var imc = 0
+
+    function calcular() {
+        peso = input_peso.value
+        altura = input_altura.value 
+        imc = input_peso.value / (input_altura.value * input_altura.value)
+        var nome= input_nome.value
+
+       var pe = altura / 0.3048;   
+
+       var onca= peso * 35.274;
+
+       var onca_pe = onca / (pe * pe)
+
+
+       alert (`${nome} seu imc é de: ${imc} A sua altura em pés é de: ${pe} O seu peso em onças é de: ${onca} O seu IMC em onças/pés² é de: ${onca_pe}`)
+
+    }
+
+
+
+
+
+</script>

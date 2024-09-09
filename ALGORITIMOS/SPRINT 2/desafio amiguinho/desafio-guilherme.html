@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JK Polis</title>
+</head>
+<h1>Gastos Mensais em JKPolis</h1>
+
+<label for="selectGasto">Selecione o tipo de gasto:</label>
+<select id="selectGasto" onchange="mostrarInputExtra()">
+    <option value="">Selecione...</option>
+    <option value="Conta de luz">Conta de luz</option>
+    <option value="Cartão de crédito">Cartão de crédito</option>
+    <option value="Água">Água</option>
+    <option value="Internet">Internet</option>
+    <option value="Comida">Comida</option>
+</select>
+
+<div id="inputExtra" style="display: none;">
+    <!-- O conteúdo do input extra será inserido aqui -->
+</div>
+
+<label for="selectRegiao">Selecione a região:</label>
+<select id="selectRegiao">
+    <option value="Norte">Zona Norte</option>
+    <option value="Sul">Zona Sul</option>
+    <option value="Centro">Centro</option>
+    <option value="Oeste">Zona Oeste</option>
+    <option value="Leste">Zona Leste</option>
+</select>
+
+<button onclick="calcularGasto()">Calcular Gasto</button>
+
+<div id="resultado"></div>
+
+<script>
+function mostrarInputExtra() {
+    var selectGasto = document.getElementById("selectGasto");
+    var inputExtra = document.getElementById("inputExtra");
+    var inputExtraContent = "";
+
+    if (selectGasto.value === "Conta de luz") {
+        inputExtraContent = '<label for="horasLuz">Quantidade de horas de luz:</label>';
+        inputExtraContent += '<input type="number" id="horasLuz" placeholder="Horas de luz">';
+    } else if (selectGasto.value === "Cartão de crédito") {
+        inputExtraContent = '<label for="tipoCompra">Tipo de compra:</label>';
+        inputExtraContent += '<select id="tipoCompra"><option value="Presencial">Presencial</option><option value="Internet">Internet</option></select>';
+    } else if (selectGasto.value === "Água") {
+        inputExtraContent = '<label for="horasAgua">Quantidade de horas de água:</label>';
+        inputExtraContent += '<input type="number" id="horasAgua" placeholder="Horas de água">';
+    } else if (selectGasto.value === "Internet") {
+        inputExtraContent = '<label for="mbInternet">Quantidade de MB de internet:</label>';
+        inputExtraContent += '<input type="number" id="mbInternet" placeholder="Quantidade de MB">';
+    } else if (selectGasto.value === "Comida") {
+        inputExtraContent = '<label for="quantidadeItens">Quantidade de itens comprados:</label>';
+        inputExtraContent += '<input type="number" id="quantidadeItens" placeholder="Quantidade de itens">';
+    }
+
+    inputExtra.innerHTML = inputExtraContent;
+    inputExtra.style.display = "block";
+}
+
+function calcularGasto() {
+    var selectGasto = document.getElementById("selectGasto");
+    var selectRegiao = document.getElementById("selectRegiao");
+    var resultado = document.getElementById("resultado");
+    var gasto = 0;
+
+    if (selectGasto.value === "Conta de luz") {
+        var horasLuz = parseInt(document.getElementById("horasLuz").value);
+        gasto = horasLuz * 9; // Cada hora de luz gasta 9 JKCoins
+    } else if (selectGasto.value === "Cartão de crédito") {
+        var tipoCompra = document.getElementById("tipoCompra").value;
+        if (tipoCompra === "Presencial") {
+            gasto = 533.89; // Valor médio de uma compra presencial
+        } else if (tipoCompra === "Internet") {
+            gasto = 43.22 + 12.00; // Valor médio de uma compra pela internet com frete fixo
+        }
+    } else if (selectGasto.value === "Água") {
+        var horasAgua = parseInt(document.getElementById("horasAgua").value);
+        gasto = horasAgua * 5; // Cada hora de água gasta 5 JKCoins
+    } else if (selectGasto.value === "Internet") {
+        var mbInternet = parseInt(document.getElementById("mbInternet").value);
+        var preco140MB = 28; // Preço de 140 MB de internet
+        gasto = (mbInternet / 140) * preco140MB; // Cálculo proporcional ao preço de 140 MB
+    } else if (selectGasto.value === "Comida") {
+        var quantidadeItens = parseInt(document.getElementById("quantidadeItens").value);
+        gasto = quantidadeItens * 25.22; // Cada item custa 25.22 JKCoins
+    }
+
+    // Aplica os ajustes de acordo com a região
+    if (selectRegiao.value === "Norte") {
+        gasto *= 1.23; // Acréscimo de 23% na Zona Norte
+    } else if (selectRegiao.value === "Sul") {
+        gasto *= 1.02; // Acréscimo de 2% na Zona Sul
+    } else if (selectRegiao.value === "Centro") {
+        // Nenhum ajuste no Centro
+    } else if (selectRegiao.value === "Oeste") {
+        gasto *= 0.68; // Desconto de 32% na Zona Oeste
+    } else if (selectRegiao.value === "Leste") {
+        gasto *= 1.09; // Acréscimo de 9% na Zona Leste
+    }
+
+    resultado.textContent = "Gasto total: " + gasto.toFixed(2) + " JKCoins";
+}
+</script>
+</body>
+</html>
+

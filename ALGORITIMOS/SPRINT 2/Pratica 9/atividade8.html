@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    Informe um numero que esteja entre 0 a 200 <input type="text" id="input_numero">
+    <button onclick="viva()">Viva o 7</button>
+    <div id="div_mensagem"></div>
+
+</body>
+
+</html>
+
+<script>
+    function viva() {
+        var numero = Number(input_numero.value);
+        var frase = ``
+        div_mensagem.innerHTML = ``
+
+        if (numero >= 0 && numero <= 200) {
+
+            for (cont = 0; cont <= numero; cont++) {
+                frase = `${cont}`
+                var resto = frase % 7;
+
+                if (resto == 0) {
+
+                    div_mensagem.innerHTML += `${frase}<br>`
+
+                }
+
+            }
+
+        } else {
+            alert(`Numero incorreto, numero precisa estar entre 0 e 200`)
+        }
+    }
+
+
+</script>

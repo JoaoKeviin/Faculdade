@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    Musica que mais gosta <input type="text" id="input_musica">
+    <button onclick="cadastrar()">Cadastrar</button> <br>
+    <button onclick="exibir()">Exibir</button> <br>
+    De <input type="text" id="input_de"> <br>
+    Até <input type="text" id="input_ate"> <br>
+    <button onclick="filtrar()">filtrar</button> <br>
+    <div id="div_mensagem"></div>
+
+
+</body>
+</html>
+
+<script>
+
+    lista_musica = []
+    function cadastrar() {
+        var musica = input_musica.value
+        lista_musica.push(musica)
+    }
+
+    function exibir(){
+        var musica = input_musica.value
+
+       for (var index = 0; index < lista_musica.length; index++) {
+        listagem = lista_musica[index];
+        
+        div_mensagem.innerHTML += `${listagem} <br>`
+
+       }
+    }
+
+    function filtrar() {
+            div_mensagem.innerHTML = ``
+        var musica = input_musica.value;
+        var de = input_de.value;
+        var ate = input_ate.value;
+
+        for (var index = de - 1; index < ate; index++) {
+            var listagem_musica = lista_musica[index];
+            
+            div_mensagem.innerHTML += `${listagem_musica} <br>`
+
+        }
+
+    }
+
+
+
+</script>

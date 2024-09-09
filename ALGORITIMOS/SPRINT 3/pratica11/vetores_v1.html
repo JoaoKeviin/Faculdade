@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Fruta: <input type="text" id="input_fruta"> <br>
+    <button onclick="adicionar()">Adicionar</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>    
+    var lista_frutas = []; // inicia uma lista vazia, com uma variável global
+    // sendo global, preserva o valor da lista mesmo que invoque a função várias vezes
+
+    function adicionar() {
+        var fruta = input_fruta.value;
+
+        lista_frutas.push( fruta ); // adiciona uma fruta na lista
+
+        div_mensagem.innerHTML += `${lista_frutas} <br>`;
+    }
+</script>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>Campanha do seu time de futebol</h1>
+
+    <select name="" id="select_resultado">
+        <option value="#">Indique o resultado</option>
+        <option value="vitoria">Vitoria</option>
+        <option value="empate">Empate</option>
+        <option value="derrota">Derrota</option>
+    </select> 
+    <button onclick="registrar()">Registrar Jogo</button> 
+    <div id="div_mensagem"></div> <br>
+
+    Digite qual jogo deseja ver o resultado <input type="text" oninput="ver()" id="input_jogo">
+   
+
+    <div id="div_mensagem2"></div>
+    
+
+</body>
+</html>
+
+<script>
+    lista_resultado = []
+    function registrar () {
+    var resultado = select_resultado.value
+    lista_resultado.push(resultado)
+    var qtd_vitoria = 0;
+    var qtd_empate = 0;
+    var qtd_derrota = 0;
+    var pontos_vitoria = 0
+    var pontos_empate = 0 
+    var derrota = 0;
+    var pontuacao_total = pontos_vitoria + pontos_empate + derrota;
+
+    for (var index = 0; index < lista_resultado.length; index++) {
+        var quantidade_resultado = lista_resultado[index];
+
+        if(quantidade_resultado == 'vitoria'){
+            qtd_vitoria++
+            pontos_vitoria += 3;
+        }else if (quantidade_resultado == 'empate') {
+            qtd_empate++
+            pontos_empate += 1;
+        }else if (quantidade_resultado == 'derrota') {
+            qtd_derrota++
+        }else {
+            
+        }
+        
+    }
+
+    var pontuacao_total = pontos_vitoria + pontos_empate + derrota;
+    var pontos_possiveis =  lista_resultado.length * 3
+    var aproveitamento = (pontuacao_total / pontos_possiveis) * 100
+
+    
+
+div_mensagem.innerHTML = `O time teve: ${qtd_vitoria} Vitorias, ${qtd_empate} Empate, ${qtd_derrota} Derrota<br>`
+
+div_mensagem.innerHTML += `Pontuação total de ${pontuacao_total}<br>`
+
+div_mensagem.innerHTML += `Aproveitamento de ${aproveitamento.toFixed(2)}%`
+
+    
+
+    } 
+
+    
+function ver() {
+    var jogo = Number(input_jogo.value)
+    var resultado_jogo = lista_resultado[jogo - 1]
+    if (jogo < 1 || jogo > lista_resultado.length ) {
+        div_mensagem2.innerHTML = `Não foi cadastrado o jogo ${jogo}`
+    }else {
+        div_mensagem2.innerHTML = `No ${jogo}º jogo, o resultado foi ${resultado_jogo} `
+    }
+}
+
+     
+</script>
+
+

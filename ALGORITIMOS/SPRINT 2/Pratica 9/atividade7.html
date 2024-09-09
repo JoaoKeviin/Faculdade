@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    Digite um numero entre 20 a 100 <input type="text" id="input_numero">
+    <button onclick="adoro()">Adoro multiplo de 5</button>
+    <div id="div_mensagem"></div>
+
+</body>
+
+</html>
+
+
+
+<script>
+    function adoro() {
+        var numero = Number(input_numero.value);
+        var frase = ``
+        div_mensagem.innerHTML = ``
+
+
+        if (numero >= 20 && numero <= 100) {
+
+            for (var cont = 1; cont <= numero; cont++) {
+
+                frase = `${cont}`
+
+                var resto = frase % 5
+
+                if (resto == 0) {
+
+                    div_mensagem.innerHTML += `${frase}<br>`
+
+                }
+
+
+
+            }
+        } else {
+            alert(`Numero informado incorreto`);
+        }
+
+
+    }
+</script>

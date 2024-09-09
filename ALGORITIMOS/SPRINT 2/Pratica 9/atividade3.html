@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   Digite uma frase <input type="text" id="input_frase">
+        <button onclick="frase()">Mostrar a sua frase</button>
+        <div id="div_mensagem"></div>
+</body>
+</html>
+
+
+<script>
+    function frase() {
+        var frase = input_frase.value;
+    div_mensagem.innerHTML = ``
+
+        for (cont = 1; cont <=7; cont++) {
+            div_mensagem.innerHTML += `${cont}. ${frase}<br> `
+
+        }
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+</script>

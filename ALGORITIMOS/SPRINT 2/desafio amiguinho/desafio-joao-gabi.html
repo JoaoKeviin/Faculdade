@@ -1,0 +1,56 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Calcule seus gastos mensais e descubra quanto pode guardar!</h1>
+    Qual o seu nome? <input type="text" id="input_nome"> <br>
+    Qual a sua renda mensal? <input type="text" id="input_renda"> <br>
+    Qual seu gasto com moradia? <input type="text" id="input_moradia"> <br>
+    Qual seu gasto com alimentação? <input type="text" id="input_alimentação"> <br>
+    Qual o seu gasto com transporte? <input type="text" id="input_transporte"> <br>
+    Qual o seu gasto com lazer? <input type="text" id="input_lazer"> <br>
+    Quais os seus outros gastos? <input type="text" id="input_geral"> <br>
+
+    <button onclick="Calcular()">Calcular economia</button>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function Calcular() {
+        var Nome = input_nome.value;
+        var renda = Number(input_renda.value);
+        var moradia = Number(input_moradia.value);
+        var alimentação = Number(input_alimentação.value);
+        var transporte = Number(input_transporte.value);
+        var lazer = Number(input_lazer.value);
+        var geral = Number(input_geral.value);
+        var soma = moradia + alimentação + transporte + lazer + geral;
+        var sobradaRenda = renda - soma;
+        var economia = sobradaRenda * 0.10;
+        var investimento = sobradaRenda * 0.20;
+
+        div_mensagem.innerHTML = `Olá ${Nome},
+        sua renda mensal é de R$${renda}, e seus gastos mensais são de R$${soma},
+        sendo assim sobra um total de R$${sobradaRenda} da sua renda<p>`
+
+        if (sobradaRenda >= 500) {
+            div_mensagem.innerHTML += `Você deverá economizar mensalmente R$${economia} 
+            e investir R$${investimento} da sua renda mensal, 
+            para assim ter uma boa saúde financeira, e alcançar suas metas futuras.`
+        } else if (sobradaRenda < 500) {
+            div_mensagem.innerHTML += `Você deve aumentar sua renda antes 
+            de começar a economizar e investir para ter uma boa saúde financeira`
+        }
+    }
+</script>
+
+// desafio realizado pela Gabriela

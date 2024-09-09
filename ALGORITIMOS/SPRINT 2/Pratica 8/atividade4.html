@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Banco Malete</h1>
+
+Login <input type="text" id="input_login"> <br>
+Senha <input type="text" name="" id="input_senha"> <br>
+Informação pessoal <input type="text" name="" id="input_info_pessoal"> <br>
+<button onclick="autenticar()">autenticar</button>
+<div id="div_mensagem"></div>
+
+    
+</body>
+</html>
+
+<script>
+    function autenticar() {
+        var login = input_login.value
+        var senha = input_senha.value
+        var info_pessoal = input_info_pessoal.value
+
+        if (login == 'ana' && senha == 'braga' && (info_pessoal == '1949'|| info_pessoal == 'louro josé') ) {
+            div_mensagem.innerHTML=`Usuário autenticado`
+        } else {
+            div_mensagem.innerHTML=`Falha na autenticação`
+        }
+
+
+    }
+
+</script>

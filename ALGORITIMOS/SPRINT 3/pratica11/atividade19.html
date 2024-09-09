@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    Filme que já viu <input type="text" id="input_filme">
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="listar()">Listar Filmes</button> <br>
+    Informe numero incial para filtrar <input type="text" name="" id="input_inicio"> <br>
+    Informe numero final para filtrar <input type="text" id="input_final"> <br>
+    <button onclick="filtrar()">filtrar Filme</button>
+    <div id="div_mensagem"></div>
+    
+    
+</body>
+</html>
+
+
+<script>
+
+    var lista_filme = []
+    function cadastrar() {
+        var filme = input_filme.value;
+        lista_filme.push(filme)
+        div_mensagem.innerHTML = ``
+
+        // for(var i = 0; i < lista_filme.length; i++){
+        //     div_mensagem.innerHTML = `Você já assistiu ${i+1} filmes` 
+        // }
+
+    div_mensagem.innerHTML = `${lista_filme.length}`
+
+    }
+
+    function listar() {
+        var filme  = input_filme.value;
+        div_mensagem.innerHTML = ``
+
+        for(var i = lista_filme.length - 1; i >= 0; i --) {
+            listagem_filme = lista_filme[i]
+
+            div_mensagem.innerHTML += `${listagem_filme}<br>`
+
+        }
+
+    }
+
+    function filtrar() {
+        var filme = input_filme.value;
+        var inicio = input_inicio.value
+        var final = input_final.value;
+        div_mensagem.innerHTML = ``
+
+    for(var i = final; i >= inicio ; i --) {
+            listagem_filme = lista_filme[i - 1]
+
+            div_mensagem.innerHTML += `${listagem_filme}<br>`
+    }
+
+    }
+
+</script>

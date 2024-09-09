@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    Valor do produto que deseja comprar <input type="text" name="" id="input_produto">
+    Valor do desconto <input type="text" name="" id="input_desconto">
+    valor do desconto em cima do desconto <input type="text" id="input_d_desconto">
+    Nome do atendente <input type="text" name="" id="input_nome">
+    <button onclick="calcular()">Calcular preço do produto</button>
+    <div id="div_mensagem"></div>
+
+
+</body>
+
+</html>
+
+<script>
+
+    function calcular() {
+        var produto = Number(input_produto.value);
+        var desconto = Number(input_desconto.value);
+        var dd = Number(input_d_desconto.value);
+        var nome = input_nome.value
+        var desconto_desconto = desconto / 100 * dd / 100;
+        var valorProduto = produto - desconto_desconto;
+
+
+        if (nome == "Joelinton") {
+            div_mensagem.innerHTML = `
+acordo proposto com o atendente Joelinton foi realizado com sucesso, e o valor final do produto ficou
+R$${valorProduto} `;
+        } else if (nome == "Jadson") {
+            div_mensagem.innerHTML = `
+acordo proposto com o atendente Jadson foi realizado com sucesso, e o valor final do produto ficou
+R$${valorProduto} `;
+        } else {
+            alert(`Atendente inexistente`);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+</script>

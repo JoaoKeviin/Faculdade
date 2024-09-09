@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="div_1" style="display: block;">
+        <h1>Seja bem vindo ao Banco KNAB</h1> <br>
+
+
+        <h2>Simulação de Emprestimo e investimento</h2> <br>
+
+        <h3>Entre com os dados de sua conta:<h3> <br>
+                <input placeholder="conta" type="text" id="input_conta">
+                <input placeholder="digito" type="text" id="input_digito">
+                <input placeholder="senha" type="password" id="input_senha"> <br> <br>
+                <button onclick="simular()">simular</button>
+                <div id="div_mensagem"></div>
+    </div>
+
+
+    <div id="div_2" style="display: none;">
+        <h1>Seja bem vindo ao Banco KNAB</h1> <br>
+
+        <h2>Simulação de Emprestimo e investimento</h2> <br>
+
+            <h3>Entre com os dados do seu investimento:</h3> <br>
+
+
+        Valor da operacao  <input type="text" name="" id="input_operacao">
+
+
+            <select name="" id="select_operacao">
+                <option value="#">Selecione a operacao</option>
+                <option value="emprestimo">Empréstimo</option>
+                <option value="investimento"> investimento </option>
+            </select>
+
+            <select name="prazo" id="select_prazo">
+                <option value="#">Selecione o prazo</option>
+                <option value="curto" >curto</option>
+                <option value="medio" >medio</option>
+                <option value="longo" >longo</option>
+            </select> <br> <br>
+
+            <button onclick="resultado()">Mostrar o resultado</button>
+
+            <button onclick="voltar()">voltar</button>
+
+            <div id="div_mensagem2"></div>
+
+        
+
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+
+    var contador = 0;
+
+
+
+    function simular() {
+        var conta = Number(input_conta.value)
+        var digito = Number(input_digito.value)
+        var senha = input_senha.value
+        var resto = conta % 10
+
+        if (conta > 0) {
+            if (digito !== resto) {
+                alert(`O digito não é igual ao resto da divisão do numero da conta por 10`)
+            } else if (digito >= 0 && digito <= 3 && senha == `manaus`) {
+                alert(`Dados Validados com sucesso!!`)
+                div_1.style.display = 'none'
+                div_2.style.display = "block"
+            } else if (digito >= 4 && digito <= 7 && senha == `recife`) {
+                alert(`Dados Validados com sucesso!!`)
+                div_1.style.display = 'none'
+                div_2.style.display = "block"
+            } else if (digito >= 8 && senha == `fortaleza`) {
+                alert(`Dados Validados com sucesso!!`)
+                div_1.style.display = 'none'
+                div_2.style.display = "block"
+            } else {
+                alert(`Dados incorretos`)
+            }
+
+        } else {
+            alert(`O numero da conta não pode ser 0 ou menor que zero`)
+        }
+
+
+        // ISSO SÓ IRIA ACONTECER SE OS DADOS DE LOGIN ESTIVER CERTO
+
+        //div_1.style.display = 'none'; // FAZ DESAPARECER O QUE ESTIVER NA "DIV_1"
+
+        //div_2.style.display = "block"; // FAZ APARECER O QUE ESTIVER NA "DIV_2"
+    }
+
+
+
+    function resultado() {
+    var valor_operacao = Number(input_operacao.value);
+    var operacao = select_operacao.value;
+    var prazo = select_prazo.value;
+    var juros_emprestimo_curto = valor_operacao * 0.24;
+    var juros_emprestimo_medio = valor_operacao * 0.16;
+    var juros_emprestimo_longo = valor_operacao * 0.10;
+    var juros_anual_curto = juros_emprestimo_curto * 12;
+    var juros_anual_medio = juros_emprestimo_medio * 12;
+    var juros_anual_longo = juros_emprestimo_longo * 12;
+    var rendimento_curto = valor_operacao * 0.05;
+    var rendimento_medio = valor_operacao * 0.08;
+    var rendimento_longo = valor_operacao * 0.12;
+    var rendimento_curto_anual = rendimento_curto * 12;
+    var rendimento_medio_anual = rendimento_medio * 12;
+    var rendimento_longo_anual = rendimento_longo * 12;
+    contador ++
+    
+
+    if (prazo == 'curto' || prazo == 'medio') {
+        alert(`Esta operação está condicionada ao seu perfil`)
+    }
+
+ if (operacao == 'emprestimo' && prazo == 'curto') {
+        div_mensagem2.innerHTML = `<br>Simulação ${contador} – Para o empréstimo de R$${valor_operacao} no ${prazo} prazo  será cobrado os juros de R$${juros_anual_curto} ao ano`
+    } else if (operacao == 'emprestimo' && prazo == 'medio') {
+        div_mensagem2.innerHTML = `<br>Simulação ${contador} – Para o empréstimo de R$${valor_operacao} no ${prazo} prazo  será cobrado os juros de R$${juros_anual_medio} ao ano`
+    } else if (operacao == 'emprestimo' && prazo == 'longo') {
+        div_mensagem2.innerHTML = `<br>Simulação ${contador} – Para o empréstimo de R$${valor_operacao} no ${prazo} prazo  será cobrado os juros de R$${juros_anual_longo} ao ano`
+    }else if (operacao == 'investimento' && prazo == 'curto'){
+        div_mensagem2.innerHTML = `Simulação ${contador} – Investindo R$${valor_operacao} no ${prazo} prazo o seu rendimento será de R$${rendimento_curto_anual} ao ano`
+    } else if (operacao == 'investimento' && prazo == 'medio') {
+        div_mensagem2.innerHTML = `Simulação ${contador} – Investindo R$${valor_operacao} no ${prazo} prazo o seu rendimento será de R$${rendimento_medio_anual} ao ano`
+    } else if (operacao == 'investimento' && prazo == 'longo') {
+        div_mensagem2.innerHTML = `Simulação ${contador} – Investindo R$${valor_operacao} no ${prazo} prazo o seu rendimento será de R$${rendimento_longo_anual} ao ano`
+    }
+
+    }
+    
+    function voltar() {
+        div_1.style.display = 'block'
+        div_2.style.display = "none"
+    }
+
+</script>

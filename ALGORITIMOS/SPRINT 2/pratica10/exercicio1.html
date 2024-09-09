@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+Numeros <input type="text" name="" id="input_numero">
+<button onclick="gerar()">Gerar numero aleatorio</button>
+<div id="div_mensagem"></div>
+
+
+
+</body>
+</html>
+
+
+<script>
+function gerar() {
+
+    var numero = Number(input_numero.value);
+    div_mensagem.innerHTML = ``;
+    var contador_abaixo_metade = 0;
+    var contador_acima_metade = 0;
+
+    var total = 0;
+    var menor_numero = 1;
+    var maior_numero = 0;
+    
+    for (var cont = 1; cont <= numero; cont++) {
+    var aleatorio = Math.random();
+
+        total += aleatorio
+    
+
+        if (aleatorio >= 0.5) {
+            contador_acima_metade ++;
+            div_mensagem.innerHTML += `${aleatorio} - metade superior <br>`
+        } else {
+            contador_abaixo_metade ++;
+            div_mensagem.innerHTML += `${aleatorio} - metade inferior <br>`
+        }
+
+        if (aleatorio > maior_numero) {
+            maior_numero = aleatorio;
+        }
+        if (aleatorio < menor_numero) {
+            menor_numero = aleatorio
+        }
+    }
+
+    var media = total / numero;
+    
+    div_mensagem.innerHTML += ` <br> TOTAL DE NUMEROS SORTEADOS ABAIXO DA METADE ${contador_abaixo_metade}<br>`
+    div_mensagem.innerHTML += ` <br> TOTAL DE NUMEROS SORTEADOS ABAIXO DA METADE ${contador_acima_metade}<br>`
+    div_mensagem.innerHTML += ` <br> MEDIA DE NUMEROS SORTEADOS ${media} <br>`
+    div_mensagem.innerHTML += ` <br> MAIOR NUMERO SORTEADO É  ${maior_numero} <br>`
+    div_mensagem.innerHTML += ` <br> MENOR NUMERO SORTEADO É ${menor_numero} <br>`
+}
+</script>

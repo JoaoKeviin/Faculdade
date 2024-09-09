@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    Login <input type="text" id="input_login">
+    Senha <input type="password" name="" id="input_senha">
+    Código de segurança <input type="password" id="input_codigo">
+    <button onclick="entrar()">entrar</button>
+
+</body>
+</html>
+
+
+<script>
+    function entrar() {
+        var login = input_login.value;
+        var senha = input_senha.value;
+        var codigo = Number(input_codigo.value);
+
+        if (login == "SPTech" && senha == "digital" && codigo == 123) {
+            alert(`Usuário autenticado com sucesso`);
+        }else {
+            alert(`Falha na autenticação`);
+        }
+    }
+</script>

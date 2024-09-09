@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Fruta: <input type="text" id="input_fruta" /> <br />
+    <button onclick="adicionar()">Adicionar</button>
+    <button onclick="analisar()">Analisar</button>
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+<script>
+  var lista_frutas = ['morango', 'banana', 'pera', 'uva']; // inicia uma lista já com alguns valores
+
+  function adicionar() {
+    var fruta = input_fruta.value;
+ 
+    lista_frutas.push(fruta); // adiciona a fruta dentro do vetor
+
+    div_mensagem.innerHTML += `${lista_frutas} <br>`; // exibe o vetor inteiro
+  }
+
+  function analisar() {
+    var fruta = input_fruta.value;
+    
+    var tamanho_lista = lista_frutas.length; // obtém o tamanho da lista, com base na quantidade de itens dentro dela
+
+    var contador_frutas_encontradas = 0; // inicializa um contador com 0
+
+    for (var index = 0; index < tamanho_lista; index++) {
+        
+        var fruta_atual = lista_frutas[index]; // a cada repetição, busca a fruta dentro da lista, de acordo com a posição do index        
+
+        if (fruta == fruta_atual) { // se a fruta que o usuário pesquisou, for igual a fruta que está sendo percorrida
+            contador_frutas_encontradas++; // incrementa o contador de frutas que encontrou
+        }
+    }   
+    div_mensagem.innerHTML = `A fruta ${fruta} existe ${contador_frutas_encontradas} vezes na lista`;
+  }
+</script>

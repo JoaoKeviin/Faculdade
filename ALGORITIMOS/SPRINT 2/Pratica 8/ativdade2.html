@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Informe sua altura <input type="text" id="input_altura">
+    
+    <select name="" id="input_select">Informe a cor do cabelo
+        <option value="1">Preto</option>
+        <option value="2">Vermelho</option>
+        <option value="3">Amarelo</option>
+        <option value="4">Castanho</option>
+    </select>
+    <button onclick="match()">Deu Match</button>
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    function match() {
+        var altura = Number(input_altura.value);
+        var select = input_select.value
+
+        if (altura == 1.85 && select == 4 || select == 3 ) {
+
+            div_mensagem.innerHTML=`<img src="https://www.google.com/imgres?q=imagem%20de%20um%20cara%20feliz&imgurl=https%3A%2F%2Fst.depositphotos.com%2F1967477%2F1843%2Fi%2F950%2Fdepositphotos_18438047-stock-illustration-happy-smiley-emoticon-face.jpg&imgrefurl=https%3A%2F%2Fdepositphotos.com%2Fbr%2Fillustration%2Fhappy-smiley-emoticon-face-18438047.html&docid=Bn_2RhO9J8nFTM&tbnid=RGjr9kh-jetrCM&vet=12ahUKEwiPxvG2rquFAxUVrpUCHQEmB30QM3oECBsQAA..i&w=1023&h=675&hcb=2&ved=2ahUKEwiPxvG2rquFAxUVrpUCHQEmB30QM3oECBsQAA" alt="">`
+    
+        } else {
+            div_mensagem.innerHTML=`<img src="https://www.google.com/imgres?q=cara%20triste&imgurl=https%3A%2F%2Fstatic6.depositphotos.com%2F1002188%2F648%2Fi%2F450%2Fdepositphotos_6489061-stock-photo-sad-symbol.jpg&imgrefurl=https%3A%2F%2Fdepositphotos.com%2Fbr%2Fphotos%2Fcara-triste.html&docid=J4qnrAk9zDZELM&tbnid=B-2y4UmFxeM4aM&vet=12ahUKEwiCpMfyrquFAxUHq5UCHTssBWwQM3oECBoQAA..i&w=600&h=600&hcb=2&ved=2ahUKEwiCpMfyrquFAxUHq5UCHTssBWwQM3oECBoQAA" alt="">`
+        }
+
+        
+
+
+    }
+</script>

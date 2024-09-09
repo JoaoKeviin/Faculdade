@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Numeros a serem sorteados <input type="text" name="" id="input_numero">
+    <button onclick="sorteio()">Sortear</button>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+
+<script>
+    function sorteio() {
+        var numero = Number(input_numero.value)
+        div_mensagem.innerHTML = ``
+        var contador_total_numeros_1 = 0
+        var contador_total_numeros_2 = 0
+        var contador_total_numeros_3 = 0
+        var contador_total_numeros_4 = 0
+        var menor_numero_1 = 1;
+        var menor_numero_2 = 1;
+        var menor_numero_3 = 1;
+        var menor_numero_4 = 1;
+        var maior_numero_1 = 0;
+        var maior_numero_2 = 0;
+        var maior_numero_3 = 0;
+        var maior_numero_4 = 0;
+
+
+        for (cont = 1; cont <= numero; cont++) {
+            var aleatorio = Math.random()
+
+
+            if (aleatorio >= 0.75) {
+                if (aleatorio > maior_numero_1) {
+                    maior_numero_1 = aleatorio;
+                }
+                if (aleatorio < menor_numero_1) {
+                    menor_numero_1 = aleatorio
+                }
+                contador_total_numeros_1++
+                div_mensagem.innerHTML += `${aleatorio} está no 1º quartil <br> `
+            } else if (aleatorio >= 0.5 && aleatorio < 0.75) {
+                if (aleatorio > maior_numero_2) {
+                    maior_numero_2 = aleatorio;
+                }
+                if (aleatorio < menor_numero_2) {
+                    menor_numero_2 = aleatorio
+                }
+
+                contador_total_numeros_2++
+                div_mensagem.innerHTML += `${aleatorio} está no 2º quartil <br> `
+            } else if (aleatorio >= 0.25 && aleatorio < 0.5) {
+                if (aleatorio > maior_numero_3) {
+                    maior_numero_3 = aleatorio;
+                }
+                if (aleatorio < menor_numero_3) {
+                    menor_numero_3 = aleatorio
+                }
+
+                contador_total_numeros_3++
+                div_mensagem.innerHTML += `${aleatorio} está no 3º quartil <br>`
+            } else {
+                if (aleatorio > maior_numero_4) {
+                    maior_numero_4 = aleatorio;
+                }
+                if (aleatorio < menor_numero_4) {
+                    menor_numero_4 = aleatorio
+                }
+
+                contador_total_numeros_4++
+                div_mensagem.innerHTML += `${aleatorio}  está no 4º quartil <br>`
+            }
+
+
+        }
+
+
+
+
+        div_mensagem.innerHTML += `1º QUARTIL <br> 
+        TOTAL DE NÚMEROS SORTEADOS = ${contador_total_numeros_1} <br> 
+     MAIOR NÚMERO SORTEADO = ${maior_numero_1} <br>
+     MENOR NÚMERO SORTEADO = ${menor_numero_1} <br>`
+
+        div_mensagem.innerHTML += `2º QUARTIL <br> 
+        TOTAL DE NÚMEROS SORTEADOS = ${contador_total_numeros_2} <br> 
+     MAIOR NÚMERO SORTEADO = ${maior_numero_2} <br>
+     MENOR NÚMERO SORTEADO = ${menor_numero_2} <br>`
+
+        div_mensagem.innerHTML += `3º QUARTIL <br> 
+        TOTAL DE NÚMEROS SORTEADOS = ${contador_total_numeros_3} <br> 
+     MAIOR NÚMERO SORTEADO = ${maior_numero_3} <br>
+     MENOR NÚMERO SORTEADO = ${menor_numero_3} <br>`
+
+        div_mensagem.innerHTML += `4º QUARTIL <br> 
+        TOTAL DE NÚMEROS SORTEADOS = ${contador_total_numeros_4} <br> 
+     MAIOR NÚMERO SORTEADO = ${maior_numero_4} <br>
+     MENOR NÚMERO SORTEADO = ${menor_numero_4} <br>`
+
+    }
+</script>

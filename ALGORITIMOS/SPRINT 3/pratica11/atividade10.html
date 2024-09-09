@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Informe as linhas de onibus que você pegou durante a semana <input type="text" name="" id="input_linha">
+    <button onclick="gravar()">Gravar busão</button>
+    <button onclick="pesquisar()">Pesquisar</button>
+    <div id="div_mensagem"></div>
+
+
+</body>
+
+</html>
+
+<script>
+
+    lista_linha = []
+
+    function gravar() {
+        var linha = input_linha.value;
+        lista_linha.push(linha);
+        var tamanho_lista = lista_linha.length;
+        div_mensagem.innerHTML = ``
+
+        for (var index = tamanho_lista - 1; index >= 0; index--) {
+            var linha_atual = lista_linha[index];
+            div_mensagem.innerHTML += `${linha_atual}<br>`
+
+        }
+    }
+
+    function pesquisar() {
+        var linha = input_linha.value;
+        var tamanho_lista = lista_linha.length;
+        var armazenar = 0;
+        var posicao = '';
+        div_mensagem.innerHTML = ``
+
+
+
+
+        if (lista_linha.indexOf(linha) >= 0) {
+        for (var index = 0; index < tamanho_lista; index++) {
+            var linha_atual = lista_linha[index];
+
+            if(linha == linha_atual){
+                armazenar++
+                posicao += `${index +1}, `
+            }
+           
+        }
+        div_mensagem.innerHTML += `você já pegou essa linha ${armazenar} na ordem ${posicao}. <br>`
+    }else {
+        div_mensagem.innerHTML += `Você ainda não pegou essa linha`
+    }
+
+      
+                
+           
+
+          
+
+
+
+    }
+
+</script>

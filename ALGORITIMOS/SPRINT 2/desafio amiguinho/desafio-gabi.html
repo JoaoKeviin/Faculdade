@@ -1,0 +1,52 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    Nome do usuario <input type="text" id="input_nome"> <br>
+    Preco do primeiro transporte <input type="text" name="" id="input_primeiro"> <br>
+    Preco do segundo transporte <input type="text" name="" id="input_segundo"> <br>
+
+
+    <button onclick="calcular()">Calcular transporte</button>
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    function calcular() {
+        var nome = input_nome.value;
+        var primeiro_transporte = Number(input_primeiro.value);
+        var segundo_transporte = Number(input_segundo.value);
+        
+        var valor_diario = primeiro_transporte + segundo_transporte;
+        var valor_mensalmente = valor_diario * 22;
+        var valor_curso = valor_mensalmente * 6;
+
+
+        div_mensagem.innerHTML = `Olá ${nome} o seu gasto diario é de R$${valor_diario}, e o seu gasto mensal é de R$${valor_mensalmente},
+        então você gastará aproximadamente em 6 meses de curso R$${valor_curso}.`
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+</script>

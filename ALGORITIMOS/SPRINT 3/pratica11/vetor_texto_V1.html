@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Frase: <input type="text" id="input_frase"> <br>
+    <button onclick="exibir()">Exibir</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+
+    /*
+        a função abaixo, captura a frase digitada pelo usuário
+
+        utilizando o ".length", verifica a quantidade de caracteres da frase (tamanho_frase)
+
+        caso o tamanho seja menor que 5, exibe um alerta;
+
+        mas, caso o tamanho da frase seja ao menos 5:
+            - utilizando o "frase[x]", exibe os 5 primeiros caracteres do texto
+            - a contagem de índices sempre se inicia em 0, ou seja:
+                CARRO -> possui 5 letras
+                01234 -> índices válidos da palavra
+    */
+
+    function exibir() {
+        var frase = input_frase.value;
+        var tamanho_frase = frase.length;
+
+        if (tamanho_frase < 5) {
+            alert("Deve ter ao menos 5 letras");
+        } else {
+            div_mensagem.innerHTML = `
+                 ${ frase[0]  } <br>
+                 ${ frase[1]  } <br>
+                 ${ frase[2]  } <br>
+                 ${ frase[3]  } <br>
+                 ${ frase[4]  } <br>
+            `;
+        }
+    }
+</script>

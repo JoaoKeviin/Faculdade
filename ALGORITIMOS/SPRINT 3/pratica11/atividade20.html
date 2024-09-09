@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Informe nome do produto <input type="text" id="input_produto">
+    Informe o preco do produto <input type="text" id="input_preco">
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="atualizar()">Atualizar estoque</button>    
+    <div id="div_mensagem"></div>
+    <div id="div_mensagem1"></div>
+    <div id="div_mensagem2"></div>
+
+    <select name="" id="select_filtrar">
+        <option value="#">Selecione as opções</option>
+        <option value="1">Preços acima de</option>
+        <option value="2">Preços abaixo de</option>
+    </select>
+    valor <input type="text" id="input_valor">
+    <button onclick="filtrar()">Filtrar produtos</button>
+    <div id="div_mensagem3"></div>
+    
+</body>
+</html>
+
+
+<script>
+
+   var lista_produto = []
+   var lista_preco = []
+
+    function cadastrar() {
+        var produto = input_produto.value;
+        var preco = Number(input_preco.value);
+        div_mensagem.innerHTML = ``
+
+        if(preco >= 0 && produto.length >=3) {
+
+            lista_produto.push(produto)
+            lista_preco.push(preco)
+
+        }else {
+            div_mensagem.innerHTML = `Preco negativo, ou produto com menos de 3 caracteres`
+        }
+    }
+
+    function atualizar() {
+        var produto = input_produto.value;
+        var preco = Number(input_preco.value);
+        div_mensagem.innerHTML = ``
+        var soma_valores = 0
+
+        for(var index = 0; index < lista_produto.length; index++) {
+            var listagem_produto = lista_produto[index]
+            soma_valores += lista_preco[index]; 
+            
+            div_mensagem.innerHTML = `Você tem ${lista_preco.length} produtos cadastrados em estoque <br>`
+            div_mensagem1.innerHTML += `${index + 1}. ${listagem_produto} - R$${lista_preco[index]} <br>`
+            div_mensagem2.innerHTML = `seu estoque vale R$${soma_valores}`
+
+
+        }
+
+    
+    }
+
+    function filtrar() {
+        var produto = input_produto.value;
+        var preco = Number(input_preco.value);
+        var filtrar = select_filtrar.value;
+        var valor = input_valor.value
+        div_mensagem3.innerHTML = ``
+
+        if(filtrar == 1) {
+        
+            for(var i = 0; i <= lista_preco.length; i++) {
+              var listagem_preco = lista_preco[i]
+              
+                if(listagem_preco >= valor){
+              div_mensagem3.innerHTML += `${listagem_preco}<br>`
+                }
+            }
+
+
+
+        }else {
+
+            
+            for(var i = 0; i <= lista_preco.length; i++) {
+              var listagem_preco = lista_preco[i]
+
+              if(listagem_preco <= valor){
+              div_mensagem3.innerHTML += `${listagem_preco}<br>`
+                }
+
+            }
+            
+        }
+
+
+    }
+
+</script>

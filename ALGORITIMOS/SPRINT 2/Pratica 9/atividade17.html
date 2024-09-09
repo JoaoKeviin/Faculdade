@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+Quantas Coca-cola você acha que bebeu na vida ?: <input type="text" id="input_coca">
+<button onclick="ver()">Ver Quantidade</button>
+<div style="display: flex; justify-content: start; height: 50px"  id="div_mensagem"></div>
+    
+</body>
+</html>
+<img src="">
+<script>
+    function ver() {
+        var coca = Number(input_coca.value);
+        div_mensagem.innerHTML = ``
+        for(cont = 1; cont <= coca; cont++) {
+
+            div_mensagem.innerHTML += `<img src="https://andinacocacola.vtexassets.com/arquivos/ids/157651/110130_COCA---CCO350ml.jpg?v=638404083111870000" > <br>`
+
+
+        }
+
+    }
+</script>
+<img src="" style="flex-direction: row;" alt="">

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Quantas xicaras de de café com leite ja tomou na vida ? <input type="text" name="" id="input_cafe"> <br>
+    <button onclick="ver()">Ver quantidade</button>
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    function ver() {
+        var cafe = Number(input_cafe.value);
+        div_mensagem.innerHTML = ``
+        
+         // var url_cafe = "./img_cafe.png"; // imagem local
+         var url_cafe = "https://img.freepik.com/fotos-premium/cafe-em-po-na-colher-de-madeira-em-branco_253984-1697.jpg";
+
+var img_cafe = `<img style="width: 100px" src="${url_cafe}" />`;
+
+for (var cont = 1; cont <= cafe; cont++) {
+    div_mensagem.innerHTML += `
+        ${img_cafe} 
+        ${img_cafe} 
+        <img style="width: 100px" src="https://bolosparavender.com.br/wp-content/uploads/2020/08/fazer-bolo-com-leite-em-po-da-certo-como-fazer.jpg"/> <br><br>
+    `;
+}
+}
+/*
+na função acima, estruturamos uma variável que representa a imagem da colher de café.
+a imagem da colher de café representa a mesma estrutura da colher de leite em pó, descrita no "innerHTML +=", alterando apenas o SRC.
+deste modo, temos um exemplo dinâmico, composto com variáveis (café) e outro estático, criado dentro da div_mensagem.innerHTML (leite em pó)
+*/
+</script>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Distancia percorrida <input type="number" id="input_distancia"> <br>
+    Tempo de duracao da viagem <input type="number" id="input_tempo"> <br>
+    Quantidade de passageiros <input type="number" id="input_quantidade"> <br>
+    Hora De inicio da viagem <input type="number" id="input_inicio">
+    <button onclick="calcular()">Realizar viagem</button>
+    <div id="div_mensagem"></div>
+
+
+</body>
+</html>
+
+<script>
+    function calcular(){
+
+        // INPUTS
+        
+        var duracao_viagem = Number(input_tempo.value)
+        var hora_inicio = Number(input_inicio.value)
+        var passageiro = Number(input_quantidade.value)
+        var distancia = Number(input_distancia.value)
+
+        // CALCULOS
+        var custo_viagem = 0.77;
+        var minuto_km = 1.8;
+        var qntCombustivel = distancia / 12;
+        var custo_percusso = custo_viagem * distancia;
+        var custoPercursoFinal = 0;
+        var estimativa_temp =  minuto_km * distancia;
+
+        var estimativaMais = estimativa_temp + (estimativa_temp * 0.10)
+        var estimativaMenos = estimativa_temp - (estimativa_temp * 0.10)
+
+        var acompanhante = passageiro - 1;
+        var valorAcompanhante;
+
+        var bonus_horario = (custo_percusso - 9) /100
+
+        //DECIÇÕES
+        
+        if (duracao_viagem >= estimativaMais) {
+            custoPercursoFinal = custo_percusso + (custo_percusso * 0.07);
+        }
+        if (duracao_viagem < estimativaMenos) {
+            custoPercursoFinal = custo_percusso - (custo_percusso * 0.08)
+        }
+        
+        if (passageiro > 1) {
+            valorAcompanhante = acompanhante * 3.00
+        }
+
+
+        //parei aqui
+        
+        if (hora_inicio > 0) {
+            if (hora_inicio <= 6) {
+                var bonus_horario = (custo_percusso - 9) /100
+            }
+        }
+
+        if (hora_inicio > 20) {
+            if (hora_inicio <24) {
+                var adicional_horario = (custo_percusso + 11) /100
+            }
+        }
+
+        var valor_total = (custo_percusso + estimativa_temp + passageiro + hora_inicio);
+
+        var valor_combustivel = (qntCombustivel * 4)
+        
+        div_mensagem.innerHTML = `A viagem foi iniciada às ${hora_inicio} horas e tinha estimativa de ${estimativa_temp} minutos e durou ${duracao_viagem} 
+        minutos, percorrendo ${distancia} KM, com ${passageiro} passageiros, totalizando R$${valor_total} do preço da corrida. Com essa distância, 
+        foram consumidos ${qntCombustivel} litros de gasolina, totalizando R$${valor_combustivel} de consumo.`
+
+
+
+
+    }
+
+
+
+
+</script>

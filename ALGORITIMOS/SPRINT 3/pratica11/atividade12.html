@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    Nome do seus filho <input type="text" name="" id="input_filho">
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="atualizar()">Atualizar Familia</button>
+    <div id="div_mensagem"></div>
+
+
+</body>
+</html>
+
+
+<script>
+
+    var lista_filho = []
+
+    function cadastrar() {
+        var filho = input_filho.value;
+
+    
+        if(lista_filho.indexOf(filho) < 0) {
+            lista_filho.push(filho)
+        }else {
+            alert(`Não pode ter filho repetido`)
+        }
+    
+    }
+
+    function atualizar() {
+       var tamanho_lista = lista_filho.length
+       div_mensagem.innerHTML = ``
+        var particular = 3000; 
+        var publica = 1500;
+        var valor_particular = tamanho_lista * particular;
+        var valor_publica = tamanho_lista * publica;
+     
+        
+
+        div_mensagem.innerHTML += `Você tem ${tamanho_lista} filhos <br>`
+    
+        div_mensagem.innerHTML += `Seu custo mensal será aproximadamente R$${valor_particular} se colocá-los em escola particular ou R$${valor_publica} se eles estudarem em escola pública`
+
+
+
+
+
+    }
+
+
+
+</script>

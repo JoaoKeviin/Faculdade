@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    Qtd de Macaron <input type="text" name="" id="input_macaron">
+    Preço do Macaron <input type="text" name="" id="input_preco_macaron"> <br>
+
+    Qtd de Brigadeiros <input type="text" name="" id="input_brigadeiro">
+    Preço do Brigadeiros <input type="text" name="" id="input_preco_brigadeiro"> <br>
+
+    Qtd de Cupcakes <input type="text" name="" id="input_cup">
+    Preço do Cupcakes <input type="text" name="" id="input_preco_cup"> <br>
+
+    Qtd de Cheesecakes <input type="text" name="" id="input_chese">
+    Preço do Cheesecakes<input type="text" name="" id="input_preco_chese"> <br>
+
+    <button onclick="verificar()">Verificar Venda</button>
+    <div id="div_mensagem"></div>
+
+    <img src="" alt="">
+
+   
+</body>
+
+</html>
+
+<script>
+    function verificar() {
+        var macaron = Number(input_macaron.value);
+        var preco_macaron = Number(input_preco_macaron.value);
+        var brigadeiro = Number(input_brigadeiro.value);
+        var preco_brigadeiro = Number(input_preco_brigadeiro.value);
+        var cup = Number(input_cup.value);
+        var preco_cup = Number(input_preco_cup.value);
+        var chese = Number(input_chese.value);
+        var preco_chese = Number(input_preco_chese.value);
+        var total_de_doce = macaron + brigadeiro + cup + chese;
+        var venda_total = preco_macaron * macaron + preco_brigadeiro * brigadeiro + preco_cup * cup + preco_chese * chese;
+        div_mensagem.innerHTML = ``
+
+        if (macaron < 0 || preco_macaron < 0 || brigadeiro < 0 || preco_brigadeiro < 0 || cup < 0 || preco_cup < 0 || chese < 0 || preco_chese < 0) {
+            div_mensagem.innerHTML = `Valor Inserido incorreto`
+        }else {
+
+
+        for (var cont = 1; cont <= macaron; cont++) {
+            if(macaron > 0) {
+            div_mensagem.innerHTML += `Venda ${cont}<img style="width: 20px"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLcZY7oni_MFfR7HzV3WnptwxU80vAOGTya3DNDYh8Bw&s" alt=""> R$${preco_macaron}  <br>`
+            }
+        }
+        for (; cont <= brigadeiro + macaron; cont++) {
+            if (brigadeiro >0) {
+            div_mensagem.innerHTML += `Venda ${cont} <img style="width: 20px"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSjuNJx7ArUj3SRXElyB1cZoIU96Szah-p48Sz2m3DDg&s" alt=""> R$${preco_brigadeiro} <br>`
+            }
+        }
+        for (; cont <= cup + brigadeiro + macaron; cont++) {
+            if (cup >0 ) {
+            div_mensagem.innerHTML += `Venda ${cont}    <img style="width: 20px"  src="https://natashaskitchen.com/wp-content/uploads/2020/05/Vanilla-Cupcakes-3.jpg" alt=""> R$${preco_cup}<br>`
+            }
+        }
+        for (; cont <= chese + cup + brigadeiro + macaron; cont++) {
+            if (chese >0) {
+            div_mensagem.innerHTML += `Venda ${cont}    <img style="width: 20px" src="https://cakesbymk.com/wp-content/uploads/2023/11/Template-Size-for-Blog-Photos-24.jpg" alt=""> R$${preco_chese} <br>`
+            }
+        }
+
+        div_mensagem.innerHTML += `Com a quantidade de ${macaron} Macarons, ${brigadeiro} Brigadeiros, ${cup} Cupcakes e ${chese} Cheesecakes, a venda totalizará R$${venda_total}`
+
+    }
+
+
+
+    }
+</script>

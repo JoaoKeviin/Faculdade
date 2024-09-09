@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade II</title>
+</head>
+<body>
+    Salario <input type="text" id="input_salario"> <br>
+    Adicional <input type="text" id="input_adicional"> <br>
+    Bônus <input type="text" id="input_bonus"> <br>
+    <button onclick="calcular()">Analisar minha renda</button>
+    <div id="div_mensagem"></div>
+    <div id="div_mensagem2"></div>
+    <div id="div_mensagem3"></div>
+    
+</body>
+</html>
+
+<script>
+    function calcular() {
+        // inputs
+    var salario = Number(input_salario.value)
+    var adicional = Number (input_adicional.value)
+    var bonus = Number (input_bonus.value)
+        //calculos
+    var salario_bruto = salario + adicional + bonus;
+    var ir = 0;
+    var descontoir = 0;
+
+        //condicao
+    if (salario_bruto >= 10000) {
+        ir = salario_bruto * 0.125;
+         }
+    //calculo
+    var desconto_ir = salario_bruto - ir
+    var calc_inss = desconto_ir * 0.10;
+    var calc_fgts = desconto_ir * 0.08;
+    var inss = calc_inss;
+    var fgts = calc_fgts;
+    var salario_liquido = desconto_ir - inss - fgts
+    var calc_eco = salario_liquido - (salario_liquido * 0.15);
+    var economia = salario_liquido - calc_eco;
+    var economia_anual = 0;
+
+    //mensagem do sistema
+    div_mensagem.innerHTML = `ANÁLISE DA SUA RENDA <br> <br>
+Com o salário de R$${salario}, com adicional de R$${adicional} e bônus de R$${bonus}, você tem: <br>
+
+Bruto: R$${salario_bruto}  <br>
+
+IR: R$${ir} <br>
+
+INSS: R$${inss}  <br>
+
+FGTS: R$${fgts} <br>
+
+Líquido: R$${salario_liquido}`
+
+    //decisao
+if (salario_liquido > 2500) {
+        var economia_anual = economia * 12;
+        div_mensagem2.innerHTML = `<br> Com a renda de <span>R$${salario_liquido}</span>, é recomendado poupar R$${economia}, 
+para que em um ano tenha poupado R$${economia_anual}`
+    } else {
+        div_mensagem3.innerHTML = `<br> Com a renda de R$${salario_liquido}, é recomendado obter renda extra para realizar uma poupança`
+    }
+
+
+
+    }
+
+</script>

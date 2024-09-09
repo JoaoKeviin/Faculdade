@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Informe sua idade <input type="text" name="" onkeyup="idade()" id="input_idade">
+    <div id="div_mensagem"></div>
+
+
+</body>
+</html>
+
+<script>
+    function idade() {
+        var idade = Number(input_idade.value);
+        div_mensagem.innerHTML = ``
+        var texto = ``
+
+        for (cont = 0; cont <= idade; cont++) {
+            var texto = cont
+
+            if (texto >= 0 && texto <=4) {
+                div_mensagem.innerHTML += `${texto} anos (Primeira infância)<br>`
+
+            }else if (cont > 4 && cont <=6 ) {
+                div_mensagem.innerHTML += `${texto} anos (Pré-escolar)<br>`
+            }else if (cont > 6 && cont <= 10) {
+                div_mensagem.innerHTML += `${texto} anos (Segunda Infancia)<br>`
+            }else if (cont > 10 && cont <= 18) {
+                div_mensagem.innerHTML += `${texto} anos (Adolescência)<br>`
+            }else if (cont > 18 && cont <=50) {
+                div_mensagem.innerHTML += `${texto} anos (Adulto)<br>`
+            }else if (cont > 50 && cont <= 100) {
+                div_mensagem.innerHTML += `${texto} anos (Melhor idade)<br>`
+            }else {
+                div_mensagem.innerHTML += `${texto} anos (Matusalém)<br>`
+            }
+
+
+
+
+
+        }
+
+
+    }
+
+</script>

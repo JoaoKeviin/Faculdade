@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tênis Clube SPTECH</title>
+    <style>
+      body {
+        display: flex;
+        align-items: stretch;
+      }
+
+      body div:first-child,
+      body div:nth-of-type(2) {
+        padding: 8px;
+        border: 2px solid rgba(0, 0, 0, 0.2);
+      }
+
+      body div:nth-of-type(2) {
+        flex-grow: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <label for="input_qtd_partidas">
+        Rodadas máximas:
+        <input id="input_qtd_partidas" /><br />
+      </label>
+
+      <button onclick="realizar_partida()">Realizar partida</button>
+
+      <h3>Informe as partidas que deseja relembrar</h3>
+
+      <label for="input_inicio_intervalo">Início:</label>
+      <input id="input_inicio_intervalo" />
+      <label for="input_fim_intervalo">Fim:</label>
+      <input id="input_fim_intervalo" />
+
+      <button onclick="relembrar_partidas()">Relembrar</button>
+    </div>
+    <div>
+      <h3>Painel</h3>
+      <div id="div_painel"></div>
+    </div>
+  </body>
+</html>
+<script>
+
+lista_rodada = []
+
+function realizar_partida(){
+  var rodada_maxima = input_qtd_partidas.value;
+  var rodada1 = Math.random();
+  var rodada12 = Math.random();
+
+  var rodada2 = Math.random();
+  var rodada22 = Math.random();
+
+  var rodada3 = Math.random();
+  var rodada32 = Math.random();
+
+  var rodada4 = Math.random();
+  var rodada42 = Math.random();
+
+  var rodada5 = Math.random();
+  var rodada52 = Math.random();
+
+  var min = 1
+  var max = 10
+  var intervalo = max - min
+  var novo_aleatorio1 = rodada1 * intervalo + min;
+  var novo_aleatorio12 = rodada12 * intervalo + min;
+ 
+  var novo_aleatorio2 = rodada2 * intervalo + min;
+  var novo_aleatorio22 = rodada22 * intervalo + min;
+
+  var novo_aleatorio3 = rodada3 * intervalo + min;
+  var novo_aleatorio32 = rodada32 * intervalo + min;
+
+  var novo_aleatorio4 = rodada4 * intervalo + min;
+  var novo_aleatorio42 = rodada42 * intervalo + min;
+
+  var novo_aleatorio5 = rodada5 * intervalo + min;
+  var novo_aleatorio52 = rodada52 * intervalo + min;
+
+  var total_jogador1 = 0
+  var total_jogador2 = 0
+
+  div_painel.innerHTML=``
+
+  if(rodada_maxima > 0 && rodada_maxima <= 5) {
+    
+
+    for(var cont = 1; cont <= rodada_maxima; cont++){
+      lista_rodada.push(rodada_maxima)
+
+
+      
+     if(cont == 1){ div_painel.innerHTML +=`Rodada ${cont}<br>
+                              Jogador1: ${novo_aleatorio1.toFixed(0)}<br>
+                              Jogador2: ${novo_aleatorio12.toFixed(0)}<br>
+                              `
+                              total_jogador1 += novo_aleatorio1
+                              total_jogador2 += novo_aleatorio12
+     }else if(cont == 2){
+      div_painel.innerHTML+=`Rodada ${cont}<br>
+                              Jogador1: ${novo_aleatorio2.toFixed(0)}<br>
+                              Jogador2: ${novo_aleatorio22.toFixed(0)}<br>`
+                              total_jogador1 += novo_aleatorio2
+                              total_jogador2 += novo_aleatorio22
+     }else if(cont == 3) {
+      div_painel.innerHTML +=`Rodada ${cont}<br>
+                              Jogador1: ${novo_aleatorio3.toFixed(0)}<br>
+                              Jogador2: ${novo_aleatorio32.toFixed(0)}<br>`
+                              total_jogador1 += novo_aleatorio3
+                              total_jogador2 += novo_aleatorio32
+     }else if(cont == 4) {
+      div_painel.innerHTML+=`Rodada ${cont}<br>
+                              Jogador1: ${novo_aleatorio4.toFixed(0)}<br>
+                              Jogador2: ${novo_aleatorio42.toFixed(0)}<br>`
+                              total_jogador1 += novo_aleatorio4
+                              total_jogador2 += novo_aleatorio42
+     }else if(cont == 5){
+      div_painel.innerHTML +=`Rodada ${cont}<br>
+                              Jogador1: ${novo_aleatorio5.toFixed(0)}<br>
+                              Jogador2: ${novo_aleatorio52.toFixed(0)}<br>`
+                              total_jogador1 += novo_aleatorio5
+                              total_jogador2 += novo_aleatorio52
+    
+     }
+
+     
+     div_painel.innerHTML += `total_jogador1: ${total_jogador1.toFixed(0)}<br>
+                              total_jogador2: ${total_jogador2.toFixed(0)} <br>`
+
+     
+    }
+
+  }else{
+    alert('Numero de partidas invalidas')
+  }
+
+
+}
+
+function relembrar_partidas() {
+  var rodada_maxima = input_qtd_partidas.value;
+  var inicio = input_inicio_intervalo.value;
+  var final = input_fim_intervalo.value;
+  div_painel.innerHTML=``
+ 
+
+        for (var index = inicio - 1; index < final; index++) {
+            var listagem_rodada = lista_rodada[index];
+            
+            div_painel.innerHTML += `${listagem_rodada} <br>`
+
+        }
+
+}
+
+
+
+
+</script>

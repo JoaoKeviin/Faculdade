@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Frase: <input type="text" id="input_frase"> <br>
+    <button onclick="exibir()">Exibir</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+
+    /*
+        a função abaixo, captura a frase digitada pelo usuário
+
+        utilizando o ".length", verifica a quantidade de caracteres da frase (tamanho_frase)
+
+        caso o tamanho seja menor que 5, exibe um alerta;
+
+        mas, caso o tamanho da frase seja ao menos 5:
+            utilizando uma estrutura de repetição, contamos do índice 0 até o tamanho da frase
+            com isso, fazemos uma contagem do primeiro até o último caractere válido
+
+            - utilizando o "frase[index]", exibe o caractere da frase que está na posição "index", de acordo com o valor atual do contador
+
+            - a contagem de índices sempre se inicia em 0, ou seja:
+                CARRO -> possui 5 letras
+                01234 -> índices válidos da palavra
+
+            com a palavra CARRO, o FOR inicia no índice 0 e para no índice 4 (um a menos que o tamanho da frase)
+    */
+
+    function exibir() {
+        var frase = input_frase.value;
+        var tamanho_frase = frase.length;
+
+        if (tamanho_frase >= 5) {
+            div_mensagem.innerHTML = "";
+            
+            for (var index = 0; index < tamanho_frase; index++) {
+                
+                var letra_atual = frase[index]; // a cada repetição, busca o caractere de acordo com a posição do index
+                
+                div_mensagem.innerHTML += `${ letra_atual } <br>`; // exibe a letra atual que encontrou na posição do índice
+            }
+        } else {
+            alert("Deve ter ao menos 5 letras");
+        }
+    }
+</script>

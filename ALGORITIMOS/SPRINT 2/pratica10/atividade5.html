@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Quantas rodadas serão sorteadas no PAR ou Impar <input type="text" name="" id="input_numero"> <br>
+    <select name="" id="select_escolha">
+        <option value="#">Selecione uma opção</option>
+        <option value="1">Impar</option>
+        <option value="2">Par</option>
+    </select> <br>
+    <button onclick="jogar()">Jogar</button>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+
+<script>
+    function jogar() {
+        var numero = Number(input_numero.value);
+        var escolha = select_escolha.value;
+        var resultado;
+        div_mensagem.innerHTML =``
+        var pmg = 0;
+        var user = 0;
+
+
+        for (cont = 1; cont <= numero; cont++) {
+            var aleatorio = Math.random();
+            var inteiro = aleatorio.toFixed(0);
+            var novo_aleatorio = inteiro * 1 + 1
+            var resto = novo_aleatorio % 2
+
+            if(resto == 0) {
+                resultado = `PAR` 
+            } else{
+                resultado = `Impar` 
+            }
+
+            if ((escolha == "2" && resultado == "PAR") || (escolha == "1" && resultado == "Impar")) {
+                user++
+            }else{
+                pmg++
+            }
+
+            div_mensagem.innerHTML += `Número sorteado ${novo_aleatorio} é ${resultado} - pmg = ${pmg} - user = ${user}<br>`;
+
+        }
+
+        if (user > pmg) {
+            div_mensagem.innerHTML += `O Usuario Venceu `
+        }else if (pmg > user) {
+            div_mensagem.innerHTML +=`O Pmg Venceu`
+        }else {
+            div_mensagem.innerHTML += `Empate`
+        }
+
+    
+
+
+
+
+
+
+    }
+</script>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="cadastro" style="display: block;">
+
+        Ingredientes <input type="text" id="input_ingrediente"> <br>
+        Peso em gramas <input type="text" id="input_peso"> <br>
+        Preço por quilo <input type="text" id="input_preco"> <br>
+
+        <button onclick="adicionar()">Adicionar Ingredientes</button> <br>
+        <div id="div_mensagem"></div> <br>
+
+        Nome do Hamburguer: <input type="text" id="input_nome">
+        <button onclick="preparar()">Preparar Blend e Registrar</button> <br>
+
+        <div id="div_mensagem2"></div> <br> <br>
+
+        <button onclick="montar()">Montar cardapio</button>
+
+    </div>
+
+
+    <div id="cardapio" style="display: none;">
+
+        Tipo Hamburguer <input type="text" id="input_hamburguer"> <br>
+        Quantidade de Hamburguer <input type="text" id="input_qtd"> <br>
+        Tipo de queijo <select name="" id="select_tipo">
+            <option value="#">Selecione o tipo de queijo</option>
+            <option value="1">Sem queijo</option>
+            <option value="2">Mussarela</option>
+            <option value="3">Prato</option>
+            <option value="4">Cheddar</option>
+        </select> <br>
+
+        Cebola <select name="" id="select_cebola">
+            <option value="#">Selecione Sim ou Não</option>
+            <option value="1">Sim</option>
+            <option value="2">Não</option>
+        </select>
+
+        Alface <select name="" id="select_alface">
+            <option value="#">Selecione Sim ou Não</option>
+            <option value="1">Sim</option>
+            <option value="2">Nao</option>
+        </select> <br>
+
+        Tomate <select name="" id="select_tomate">
+            <option value="#">Selecione Sim ou Não</option>
+            <option value="1">Sim</option>
+            <option value="2">Nao</option>
+        </select> <br>
+
+        <button onclick="lanche()">Adicionar Lanche no cardapio</button>
+
+        <div id="div_mensagem3"></div>
+
+
+    </div>
+
+
+
+
+</body>
+
+</html>
+
+<script>
+
+    var lista_Ingrediente = []
+    var lista_peso = []
+    var lista_preco = []
+
+    function adicionar() {
+        var ingrediente = input_ingrediente.value;
+        var peso = Number(input_peso.value);
+        var preco = Number(input_preco.value);
+        div_mensagem.innerHTML = ``
+
+        if (ingrediente == "" && peso == "" && preco == "") {
+            div_mensagem.innerHTML = `Os campos precisam estar preenchidos`
+        } else if (lista_Ingrediente.indexOf(ingrediente) >= 0) {
+            div_mensagem.innerHTML = `O ${ingrediente} já foi adicionado`
+        } else {
+            lista_Ingrediente.push(ingrediente);
+            lista_peso.push(peso);
+            lista_preco.push(preco);
+
+            div_mensagem.innerHTML = `Adicionado ${peso} gramas de "${ingrediente}" no blend Hamburguer! `
+        }
+    }
+
+
+    var lista_nome = []
+    var lista_soma_peso = []
+    var lista_soma_preco = []
+
+    function preparar() {
+        var ingrediente = input_ingrediente.value;
+        var peso = Number(input_peso.value);
+        var preco = Number(input_preco.value);
+        var nome = input_nome.value;
+        var peso_soma = 0
+        var preco_soma = 0
+
+        div_mensagem2.innerHTML = ``
+
+
+        if (nome == "" || lista_Ingrediente.length < 2) {
+            div_mensagem2.innerHTML = `Nome vazio ou tem menos de 2 ingredientes`
+        } else {
+            for (var index = 0; index < lista_Ingrediente.length; index++) {
+
+                var listagem_ingrediente = lista_Ingrediente[index];
+                var peso_kg = lista_peso[index] / 1000
+                var preco_final = peso_kg * lista_preco[index]
+
+                div_mensagem2.innerHTML += `${index + 1}-Ingrediente: ${listagem_ingrediente} - Peso: ${lista_peso[index]} - Preço KG: ${lista_preco[index]} - Preço final: ${preco_final} <br> <br>`
+
+                peso_soma += lista_peso[index]
+
+                preco_soma += preco_final
+
+            }
+
+
+            div_mensagem2.innerHTML += `Informações Do Hamburguer Registrado No Catalogo <br>
+                    Nome: ${nome} <br>
+                    Peso total: ${peso_soma}<br>
+                    Preço total: ${preco_soma} `
+
+        lista_nome.push(nome)
+        lista_soma_peso.push(peso_soma)
+        lista_soma_preco.push(preco_soma)
+
+        }
+    }
+
+
+    function montar() {
+        var nome = input_nome.value;
+
+        if (lista_nome.indexOf(nome) < 0) {
+            div_mensagem.innerHTML = `Você tem que cadastrar um blend, para prosseguir`
+            cardapio.style.display = 'none';
+            cadastro.style.display = 'block';
+        } else {
+            cadastro.style.display = 'none';
+            cardapio.style.display = 'block';
+
+        }
+
+    }
+
+    function lanche() {
+        var hamburguer = input_hamburguer.value;
+        var quantidade = Number(input_qtd.value);
+        var tipo_queijo = select_tipo.value;
+        var cebola = select_cebola.value;
+        var alface = select_alface.value;
+        var tomate = select_tomate.value;
+        var adicional_tipo_queijo = 0;
+        var adicional_cebola = 0;
+        var adicional_alface = 0;
+        var adicional_tomate = 0;
+        var valor_hamburguer = 0;
+        var peso_total_hamburguer = 0;
+       console.log(`Tipo do queijo` + tipo_queijo)
+
+        div_mensagem3.innerHTML = ``
+
+        if (lista_nome.indexOf(hamburguer) == -1) {
+            div_mensagem3.innerHTML = `O nome do hamburguer precisar ser o mesmo cadastrado anteriormente`
+        } else if (hamburguer == "" || quantidade == "" || tipo_queijo == '#' || cebola == '#' || alface == '#' || tomate == '#') {
+            div_mensagem3.innerHTML = `Preencha todos os campos!!`
+        } else {
+
+            if (tipo_queijo == '2') {
+                adicional_tipo_queijo = 2;
+            } else if (tipo_queijo == '3') {
+                adicional_tipo_queijo = 2.5;
+            } else if (tipo_queijo == '4') {
+                adicional_tipo_queijo = 3;
+            } else if(tipo_queijo == '1'){
+                adicional_tipo_queijo = 0;
+            }
+
+                console.log("Preço Tipo do queijo:", adicional_tipo_queijo);
+
+                if (cebola == '1') {
+                    adicional_cebola = 1.5;
+                }
+                
+                if (alface == '1') {
+                    adicional_alface = 1.75;
+                }
+                
+                if (tomate == '1') {
+                    adicional_tomate = 2;
+                }
+
+                    console.log("Preço adicional cebola:", adicional_cebola);
+                    console.log("Preço adicional alface:", adicional_alface);
+                    console.log("Preço adicional tomate:", adicional_tomate);
+
+                    for (var i = 0; i < lista_soma_preco.length; i++) {
+                        listagem_preco = lista_soma_preco[i]
+
+                        valor_hamburguer += listagem_preco
+                    }
+
+                    for (var i = 0; i < lista_soma_peso.length; i++) {
+                        listagem_peso = lista_soma_peso[i]
+
+                        peso_total_hamburguer += listagem_peso
+                    }
+
+                    
+                    var preco_final_lanche = (valor_hamburguer * quantidade) + adicional_tipo_queijo + adicional_cebola + adicional_alface + adicional_tomate;
+                    console.log("Preço final do lanche:", preco_final_lanche);
+
+
+                    div_mensagem3.innerHTML = `
+            Tipo Hamburguer: ${hamburguer}(${peso_total_hamburguer}g/R$${valor_hamburguer})<br>
+            Quantidade de Hamburgueres: ${quantidade}<br>
+            Queijo: ${tipo_queijo}<br>
+            Cebola: ${cebola}<br>
+            Alface: ${alface}<br>
+            Tomate: ${tomate}<br>
+            Preço final do Lanche: R$${preco_final_lanche}`
+                
+
+            
+        }
+
+    }
+
+
+</script>

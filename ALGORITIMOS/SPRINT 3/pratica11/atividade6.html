@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    cadastrar filme: <input type="text" name="" id="input_filme">
+    <button onclick="cadastrar()">Cadastrar filme</button>
+    <div id="div_mensagem"></div>
+    
+</body>
+</html>
+
+
+<script>
+
+    var lista_filme = []
+
+    function cadastrar() {
+        var filme = input_filme.value;
+        lista_filme.push(filme)
+       
+        
+       div_mensagem.innerHTML += `${filme} <br>`
+    }
+</script>

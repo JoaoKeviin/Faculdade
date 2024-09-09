@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    cadastrar filme: <input type="text" name="" id="input_filme">
+    <button onclick="cadastrar()">Cadastrar filme</button>
+    <div id="div_mensagem"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    var lista_filme = []
+
+    function cadastrar() {
+        var filme = input_filme.value;
+        lista_filme.push(filme);
+        var tamanho_lista = lista_filme.length;
+
+        // Limpa as divs antes de adicionar novos filmes
+        div_mensagem.innerHTML = "";
+       
+
+        for (var index = 0; index < tamanho_lista; index++) {
+
+            var resto = index % 2;
+
+            if (resto == 0) {
+                div_mensagem.innerHTML += `<span style="color: aqua;">  ${lista_filme[index]} </span> <br>`;
+            } else {
+                div_mensagem.innerHTML += `<span style="color: red;"> ${lista_filme[index]}</span> <br>`;
+            }
+        }
+
+        input_filme.value = ''; // Limpa o campo de entrada após cadastrar
+    }
+</script>

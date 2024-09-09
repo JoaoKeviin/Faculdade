@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="contar()">contar</button>
+    <button onclick="incrementar()">incrementar</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+
+
+
+<script>
+
+   
+    var contador = 1;
+    var limite = 10
+
+
+   function contar() {
+
+    div_mensagem.innerHTML = " ";
+
+    var esta_sol = true;
+
+    if (esta_sol){
+        for (contador; contador <=10 ; contador++) {
+            div_mensagem.innerHTML +=`${contador} <br>`
+
+        }
+    }
+    
+
+   }
+
+   function incrementar() {
+
+    for ( ; contador <= limite; contador++) {
+            div_mensagem.innerHTML +=`${contador} <br>`
+
+        }
+
+        limite += 10 
+
+
+   }
+
+
+</script>

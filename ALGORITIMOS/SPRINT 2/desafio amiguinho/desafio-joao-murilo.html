@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolução do exercício 23</title>
+</head>
+<body>
+    <p>Resolução do exercício 23 da lista 04 criado por João Kevin e resolvido por Murilo</p>
+    Digite o nome do usuário: <input type="text" id="inputNome"><br><br>
+    Digite a renda mensal do usuário: <input type="number" id="inputRendaMensal"><br><br>
+    Digite os gastos mensais do usuário em moradia: <input type="number" id="inputGastosMoradia"><br><br>
+    Digite os gastos mensais do usuário em alimentação: <input type="number" id="inputGastosAlimentacao"><br><br>
+    Digite os gastos mensais do usuário em transporte: <input type="number" id="inputGastosTransporte"><br><br>
+    Digite os gastos mensais do usuário em lazer: <input type="number" id="inputGastosLazer"><br><br>
+    Digite outros gastos mensais do usuário: <input type="number" id="inputOutrosGastos"><br><br>
+
+    <button onclick="calcular()">Calcular Economia</button><br><br>
+
+    <div id="divMensagem"></div>
+</body>
+</html>
+<script>
+    function calcular() {
+        var nome = inputNome.value;
+        var rendaMensal = Number(inputRendaMensal.value);
+        var gastosMoradia = Number(inputGastosMoradia.value);
+        var gastosAlimentacao = Number(inputGastosAlimentacao.value);
+        var gastosTransporte = Number(inputGastosTransporte.value);
+        var gastosLazer = Number(inputGastosLazer.value);
+        var outrosGastos = Number(inputOutrosGastos.value);
+
+        var gastos = gastosMoradia + gastosAlimentacao + gastosTransporte + gastosLazer + outrosGastos;
+        var sobraRenda = rendaMensal - gastos;
+
+        var economia = rendaMensal * 0.1;
+        var investimento = rendaMensal * 0.2;
+
+        if (sobraRenda > 500) {
+            divMensagem.innerHTML = `O usuário ${nome}, gasta R$${gastos} por mês, e ganha R$${rendaMensal}, sobrando apenas R$${sobraRenda}.<br>O melhor seria você economizar R$${economia} e investir R$${investimento}.`
+        } else {
+            divMensagem.innerHTML = `O usuário ${nome}, gasta R$${gastos} por mês, e ganha R$${rendaMensal}, sobrando apenas R$${sobraRenda}.`
+        }
+    }
+</script>
+
+// Desafio realizado pelo murilo

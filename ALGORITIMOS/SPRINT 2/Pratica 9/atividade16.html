@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Quantas pessoas vão entrar no carro <input type="text" id="input_passageiro"> <br>
+    Capacidade de passageiroq que o veiculo suporta <input type="text" name="" id="input_capacidade">
+    <button onclick="partiu()">#Partiu Carona</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function partiu() {
+        var passageiro = Number(input_passageiro.value);
+        var capacidade = Number(input_capacidade.value);
+        var texto = ``
+        div_mensagem.innerHTML = ``
+
+
+
+        div_mensagem.innerHTML = `Entrou o 1º passageiro(motorista)<br>`
+        for(var cont = 2; cont <= passageiro; cont++) {
+            texto = cont
+
+            if (cont <= capacidade) {
+                div_mensagem.innerHTML += `Entrou o ${texto}º passageiro<br>`
+            }else {
+                div_mensagem.innerHTML += `O ${texto}º passageiro terá que esperar!<br>`
+            }
+
+
+        }
+
+
+
+
+
+
+    }
+</script>
